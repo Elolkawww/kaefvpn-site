@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KaefVPN — подключайся и кайфуй</title>
+<meta name="description" content="KaefVPN — VPN в Telegram. Открываешь @KaefVPN_bot, получаешь ссылку, вставляешь в клиент. 99 Telegram Stars в месяц, трафик без лимита.">
+<meta property="og:title" content="KaefVPN — подключайся и кайфуй">
+<meta property="og:description" content="VPN в Telegram: @KaefVPN_bot. 99 Telegram Stars в месяц, трафик без лимита.">
+<meta property="og:url" content="https://kaefvpn.ru/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://kaefvpn.ru/assets/leaf.jpg">
+<link rel="canonical" href="https://kaefvpn.ru/">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07051a;
+    --raise: #0e0b26;
+    --line: #231e44;
+    --text: #ece9f7;
+    --muted: #9b96b8;
+    --accent: #8b3dff;
+    --accent-hover: #9d5bff;
+    --display: "Unbounded", system-ui, sans-serif;
+    --body: "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font: 17px/1.6 var(--body); }
+  a { color: inherit; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding-left: 20px; padding-right: 20px; }
+
+  header { display: flex; align-items: center; justify-content: space-between; padding-top: 22px; padding-bottom: 22px; }
+  .brand { display: flex; align-items: center; gap: 10px; font: 700 18px var(--display); text-decoration: none; }
+  .brand img { width: 30px; height: 30px; border-radius: 8px; }
+  header nav { display: flex; gap: 22px; font-size: 15px; }
+  header nav a { color: var(--muted); text-decoration: none; }
+  header nav a:hover { color: var(--text); }
+
+  .hero { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 32px; padding-top: 56px; padding-bottom: 72px; }
+  h1 { font: 700 clamp(40px, 7vw, 76px)/1.02 var(--display); letter-spacing: -0.02em; }
+  h1 em { font-style: normal; color: var(--accent); }
+  .lead { color: var(--muted); font-size: 19px; max-width: 30em; margin: 24px 0 32px; }
+  .btn {
+    display: inline-block; background: var(--accent); color: #fff; text-decoration: none;
+    font-weight: 600; padding: 15px 26px; border-radius: 10px; transition: background .15s;
+  }
+  .btn:hover { background: var(--accent-hover); }
+  .aside { margin-top: 16px; font-size: 15px; color: var(--muted); }
+  .aside a { color: var(--text); }
+  .leaf { width: 100%; max-width: 420px; height: auto; justify-self: center; mix-blend-mode: screen; }
+
+  section { padding-top: 56px; padding-bottom: 56px; border-top: 1px solid var(--line); }
+  h2 { font: 500 14px var(--display); text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin-bottom: 28px; }
+
+  .spec { display: grid; grid-template-columns: 200px 1fr; }
+  .spec dt, .spec dd { padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .spec dt { color: var(--muted); }
+  .spec dd { font-weight: 500; }
+  .spec dd span { display: block; color: var(--muted); font-weight: 400; font-size: 15px; }
+
+  .price { display: grid; grid-template-columns: auto 1fr; gap: 20px 48px; align-items: center; }
+  .sum { font: 700 clamp(64px, 12vw, 120px)/1 var(--display); letter-spacing: -0.03em; }
+  .sum small { font-size: .3em; color: var(--muted); letter-spacing: 0; font-weight: 500; }
+  .sum .star { font-size: .7em; vertical-align: .08em; }
+  .soon { color: var(--muted); font-size: 14px; margin-top: 10px; }
+  .price p { color: var(--muted); max-width: 26em; margin-bottom: 20px; }
+  .price p b { color: var(--text); font-weight: 500; }
+
+  .steps { list-style: none; counter-reset: n; }
+  .steps li { counter-increment: n; display: grid; grid-template-columns: 64px 1fr; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .steps li::before { content: counter(n); font: 700 28px/1.1 var(--display); color: var(--accent); }
+  .steps code { font: 500 15px ui-monospace, Consolas, monospace; background: var(--raise); padding: 2px 7px; border-radius: 5px; white-space: nowrap; }
+
+  .warn { border-left: 3px solid var(--accent); padding: 4px 0 4px 24px; max-width: 640px; }
+  .warn h3 { font: 700 26px/1.2 var(--display); margin-bottom: 10px; }
+  .warn p { color: var(--muted); margin-bottom: 16px; }
+  .warn ul { list-style: none; display: grid; gap: 6px; }
+  .warn li a { font-weight: 600; text-decoration-color: var(--accent); text-underline-offset: 4px; }
+  .warn li span { color: var(--muted); }
+
+  details { border-bottom: 1px solid var(--line); padding: 16px 0; max-width: 720px; }
+  summary { cursor: pointer; font-weight: 500; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--accent); font: 500 20px/1 var(--display); }
+  details[open] summary::after { content: "−"; }
+  details p { color: var(--muted); margin-top: 10px; }
+
+  footer { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 28px; padding-bottom: 36px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+  footer a { color: var(--muted); }
+
+  @media (max-width: 720px) {
+    body { font-size: 16px; }
+    header nav { gap: 16px; }
+    h1 { font-size: 34px; }
+    .hero { grid-template-columns: 1fr; padding-top: 24px; padding-bottom: 48px; gap: 8px; }
+    .leaf { grid-row: 1; max-width: 200px; justify-self: start; margin-left: -12px; }
+    .lead { font-size: 17px; }
+    section { padding-top: 40px; padding-bottom: 40px; }
+    .spec { grid-template-columns: 1fr; }
+    .spec dt { border-bottom: 0; padding-bottom: 0; font-size: 14px; }
+    .spec dd { padding-top: 2px; }
+    .price { grid-template-columns: 1fr; }
+    .steps li { grid-template-columns: 44px 1fr; }
+  }
+</style>
+</head>
+<body>
+<header class="wrap">
+  <a class="brand" href="/"><img src="assets/favicon.png" alt="">KaefVPN</a>
+  <nav><a href="https://t.me/KaefVPN">Канал</a><a href="https://t.me/KaefVPN_bot">Бот</a></nav>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <h1>Подключайся <em>и&nbsp;кайфуй</em></h1>
+      <p class="lead">VPN живёт в Telegram. Открываешь бота, забираешь ссылку, вставляешь в клиент. Пока ты читал этот абзац, уже можно было подключиться.</p>
+      <a class="btn" href="https://t.me/KaefVPN_bot">Открыть @KaefVPN_bot</a>
+      <p class="aside">или сначала загляни в канал <a href="https://t.me/KaefVPN">@KaefVPN</a></p>
+    </div>
+    <img class="leaf" src="assets/leaf.jpg" alt="Дубовый лист — логотип KaefVPN" width="600" height="600">
+  </div>
+
+  <section class="wrap">
+    <h2>Что внутри</h2>
+    <dl class="spec">
+      <dt>Сервер</dt><dd>Финляндия</dd>
+      <dt>Трафик</dt><dd>Не считаем</dd>
+      <dt>Устройства</dt><dd>Телефон, ноутбук, планшет<span>Всё, где запускается VPN-клиент</span></dd>
+      <dt>Протоколы</dt><dd>Несколько на выбор<span>Начнут резать один — переключишься на другой</span></dd>
+      <dt>Поддержка</dt><dd>Прямо в боте<span>Отвечает человек, а не автоответчик</span></dd>
+    </dl>
+  </section>
+
+  <section class="wrap">
+    <h2>Сколько стоит</h2>
+    <div class="price">
+      <div><div class="sum">99&nbsp;<span class="star">⭐</span> <small>/ мес</small></div><div class="soon">Telegram Stars · оплата рублями — скоро</div></div>
+      <div>
+        <p><b>За одного человека.</b> Оплата прямо в боте. Сначала можно попробовать бесплатно, а потом уже решать.</p>
+        <a class="btn" href="https://t.me/KaefVPN_bot">Подключить</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2>Как подключиться</h2>
+    <ol class="steps">
+      <li><div>Открой <a href="https://t.me/KaefVPN_bot">@KaefVPN_bot</a> и нажми «Старт».</div></li>
+      <li><div>Забери ссылку подписки: бесплатную или оплаченную.</div></li>
+      <li><div>В VPN-клиенте нажми <code>+</code> → <code>Добавить по URL</code> и вставь ссылку. Всё.</div></li>
+    </ol>
+  </section>
+
+  <section class="wrap">
+    <div class="warn">
+      <h3>Не перепутай</h3>
+      <p>Аккаунтов с похожими названиями развелось много. Это не мы. Настоящие — только эти:</p>
+      <ul>
+        <li><a href="https://t.me/KaefVPN_bot">@KaefVPN_bot</a> <span>— бот</span></li>
+        <li><a href="https://t.me/KaefVPN">@KaefVPN</a> <span>— канал</span></li>
+        <li><a href="https://kaefvpn.ru/">kaefvpn.ru</a> <span>— этот сайт</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2>Вопросы</h2>
+    <details><summary>Какой клиент ставить?</summary><p>Любой, который умеет добавлять подписку по ссылке. Бот подскажет, что выбрать под твоё устройство.</p></details>
+    <details><summary>Можно сначала попробовать?</summary><p>Да. В боте есть бесплатный доступ — нажми «Бесплатный VPN».</p></details>
+    <details><summary>Не подключается</summary><p>Напиши в «Поддержку» в боте и опиши, что видишь. Разберёмся.</p></details>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span>KaefVPN, 2026</span>
+  <span><a href="https://t.me/KaefVPN_bot">@KaefVPN_bot</a> · <a href="https://t.me/KaefVPN">@KaefVPN</a></span>
+</footer>
+</body>
+</html>

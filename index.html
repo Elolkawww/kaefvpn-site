@@ -2,182 +2,279 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>KaefVPN — подключайся и кайфуй</title>
-<meta name="description" content="KaefVPN — VPN в Telegram. Открываешь @KaefVPN_bot, получаешь ссылку, вставляешь в клиент. 99 Telegram Stars в месяц, трафик без лимита.">
+<meta name="description" content="KaefVPN — VPN прямо в Telegram. Подписка за минуту в @KaefVPN_bot, безлимитный трафик, сервер в Финляндии, своё приложение для Android и Windows. 99 ⭐ в месяц.">
+<meta name="theme-color" content="#06050d">
 <meta property="og:title" content="KaefVPN — подключайся и кайфуй">
-<meta property="og:description" content="VPN в Telegram: @KaefVPN_bot. 99 Telegram Stars в месяц, трафик без лимита.">
+<meta property="og:description" content="VPN прямо в Telegram: подписка за минуту в @KaefVPN_bot, безлимитный трафик, 99 ⭐ в месяц.">
 <meta property="og:url" content="https://kaefvpn.ru/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://kaefvpn.ru/assets/leaf.jpg">
+<meta property="og:image" content="https://kaefvpn.ru/assets/leaf.png">
 <link rel="canonical" href="https://kaefvpn.ru/">
-<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #07051a;
-    --raise: #0e0b26;
-    --line: #231e44;
-    --text: #ece9f7;
-    --muted: #9b96b8;
-    --accent: #8b3dff;
-    --accent-hover: #9d5bff;
-    --display: "Unbounded", system-ui, sans-serif;
-    --body: "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font: 17px/1.6 var(--body); }
-  a { color: inherit; }
-  .wrap { max-width: 1040px; margin: 0 auto; padding-left: 20px; padding-right: 20px; }
-
-  header { display: flex; align-items: center; justify-content: space-between; padding-top: 22px; padding-bottom: 22px; }
-  .brand { display: flex; align-items: center; gap: 10px; font: 700 18px var(--display); text-decoration: none; }
-  .brand img { width: 30px; height: 30px; border-radius: 8px; }
-  header nav { display: flex; gap: 22px; font-size: 15px; }
-  header nav a { color: var(--muted); text-decoration: none; }
-  header nav a:hover { color: var(--text); }
-
-  .hero { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 32px; padding-top: 56px; padding-bottom: 72px; }
-  h1 { font: 700 clamp(40px, 7vw, 76px)/1.02 var(--display); letter-spacing: -0.02em; }
-  h1 em { font-style: normal; color: var(--accent); }
-  .lead { color: var(--muted); font-size: 19px; max-width: 30em; margin: 24px 0 32px; }
-  .btn {
-    display: inline-block; background: var(--accent); color: #fff; text-decoration: none;
-    font-weight: 600; padding: 15px 26px; border-radius: 10px; transition: background .15s;
-  }
-  .btn:hover { background: var(--accent-hover); }
-  .aside { margin-top: 16px; font-size: 15px; color: var(--muted); }
-  .aside a { color: var(--text); }
-  .leaf { width: 100%; max-width: 420px; height: auto; justify-self: center; mix-blend-mode: screen; }
-
-  section { padding-top: 56px; padding-bottom: 56px; border-top: 1px solid var(--line); }
-  h2 { font: 500 14px var(--display); text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin-bottom: 28px; }
-
-  .spec { display: grid; grid-template-columns: 200px 1fr; }
-  .spec dt, .spec dd { padding: 16px 0; border-bottom: 1px solid var(--line); }
-  .spec dt { color: var(--muted); }
-  .spec dd { font-weight: 500; }
-  .spec dd span { display: block; color: var(--muted); font-weight: 400; font-size: 15px; }
-
-  .price { display: grid; grid-template-columns: auto 1fr; gap: 20px 48px; align-items: center; }
-  .sum { font: 700 clamp(64px, 12vw, 120px)/1 var(--display); letter-spacing: -0.03em; }
-  .sum small { font-size: .3em; color: var(--muted); letter-spacing: 0; font-weight: 500; }
-  .sum .star { font-size: .7em; vertical-align: .08em; }
-  .soon { color: var(--muted); font-size: 14px; margin-top: 10px; }
-  .price p { color: var(--muted); max-width: 26em; margin-bottom: 20px; }
-  .price p b { color: var(--text); font-weight: 500; }
-
-  .steps { list-style: none; counter-reset: n; }
-  .steps li { counter-increment: n; display: grid; grid-template-columns: 64px 1fr; padding: 18px 0; border-bottom: 1px solid var(--line); }
-  .steps li::before { content: counter(n); font: 700 28px/1.1 var(--display); color: var(--accent); }
-  .steps code { font: 500 15px ui-monospace, Consolas, monospace; background: var(--raise); padding: 2px 7px; border-radius: 5px; white-space: nowrap; }
-
-  .warn { border-left: 3px solid var(--accent); padding: 4px 0 4px 24px; max-width: 640px; }
-  .warn h3 { font: 700 26px/1.2 var(--display); margin-bottom: 10px; }
-  .warn p { color: var(--muted); margin-bottom: 16px; }
-  .warn ul { list-style: none; display: grid; gap: 6px; }
-  .warn li a { font-weight: 600; text-decoration-color: var(--accent); text-underline-offset: 4px; }
-  .warn li span { color: var(--muted); }
-
-  details { border-bottom: 1px solid var(--line); padding: 16px 0; max-width: 720px; }
-  summary { cursor: pointer; font-weight: 500; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
-  summary::-webkit-details-marker { display: none; }
-  summary::after { content: "+"; color: var(--accent); font: 500 20px/1 var(--display); }
-  details[open] summary::after { content: "−"; }
-  details p { color: var(--muted); margin-top: 10px; }
-
-  footer { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 28px; padding-bottom: 36px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
-  footer a { color: var(--muted); }
-
-  @media (max-width: 720px) {
-    body { font-size: 16px; }
-    header nav { gap: 16px; }
-    h1 { font-size: 34px; }
-    .hero { grid-template-columns: 1fr; padding-top: 24px; padding-bottom: 48px; gap: 8px; }
-    .leaf { grid-row: 1; max-width: 200px; justify-self: start; margin-left: -12px; }
-    .lead { font-size: 17px; }
-    section { padding-top: 40px; padding-bottom: 40px; }
-    .spec { grid-template-columns: 1fr; }
-    .spec dt { border-bottom: 0; padding-bottom: 0; font-size: 14px; }
-    .spec dd { padding-top: 2px; }
-    .price { grid-template-columns: 1fr; }
-    .steps li { grid-template-columns: 44px 1fr; }
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/leaf.webp">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-<header class="wrap">
-  <a class="brand" href="/"><img src="assets/favicon.png" alt="">KaefVPN</a>
-  <nav><a href="https://t.me/KaefVPN">Канал</a><a href="https://t.me/KaefVPN_bot">Бот</a></nav>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-tg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13 1.4 11.5c-1-.3-1-1 .2-1.5L20.6 2.7c.9-.3 1.6.2 1.3 1.6Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5"/></symbol>
+  </defs>
+</svg>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="assets/leaf-256.webp" alt="" width="34" height="34">KaefVPN</a>
+    <nav class="nav">
+      <a href="#how">Как это работает</a>
+      <a href="app.html">Приложение</a>
+      <a href="#price">Цена</a>
+      <a href="#faq">Вопросы</a>
+      <a class="btn small" href="https://t.me/KaefVPN_bot"><svg><use href="#i-tg"/></svg>Открыть бота</a>
+    </nav>
+  </div>
 </header>
 
 <main>
-  <div class="wrap hero">
-    <div>
-      <h1>Подключайся <em>и&nbsp;кайфуй</em></h1>
-      <p class="lead">VPN живёт в Telegram. Открываешь бота, забираешь ссылку, вставляешь в клиент. Пока ты читал этот абзац, уже можно было подключиться.</p>
-      <a class="btn" href="https://t.me/KaefVPN_bot">Открыть @KaefVPN_bot</a>
-      <p class="aside">или сначала загляни в канал <a href="https://t.me/KaefVPN">@KaefVPN</a></p>
-    </div>
-    <img class="leaf" src="assets/leaf.jpg" alt="Дубовый лист — логотип KaefVPN" width="600" height="600">
-  </div>
+  <section class="hero">
+    <div class="hero-bg"><div class="glow g1"></div><div class="glow g2"></div></div>
+    <div class="wrap">
+      <div>
+        <div class="eyebrow rv"><span class="dot"></span>Подписка за минуту прямо в Telegram</div>
+        <h1 class="rv d1">Подключайся<br>и&nbsp;<span class="neon">кайфуй</span></h1>
+        <p class="lead rv d2">Быстрый VPN без лишних регистраций. Открываешь бота, получаешь ссылку, вставляешь в приложение — и всё работает. Сначала можно попробовать бесплатно.</p>
+        <div class="cta rv d3">
+          <a class="btn" href="https://t.me/KaefVPN_bot"><svg><use href="#i-tg"/></svg>Попробовать бесплатно</a>
+          <a class="btn ghost" href="app.html">Скачать приложение</a>
+        </div>
+        <p class="hero-note rv d4"><b>99 ⭐ в месяц</b> · безлимитный трафик · все устройства</p>
+      </div>
 
-  <section class="wrap">
-    <h2>Что внутри</h2>
-    <dl class="spec">
-      <dt>Сервер</dt><dd>Финляндия</dd>
-      <dt>Трафик</dt><dd>Не считаем</dd>
-      <dt>Устройства</dt><dd>Телефон, ноутбук, планшет<span>Всё, где запускается VPN-клиент</span></dd>
-      <dt>Протоколы</dt><dd>Несколько на выбор<span>Начнут резать один — переключишься на другой</span></dd>
-      <dt>Поддержка</dt><dd>Прямо в боте<span>Отвечает человек, а не автоответчик</span></dd>
-    </dl>
+      <div class="stage rv d2" id="stage">
+        <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
+        <div class="arc"></div><div class="arc slow"></div>
+        <div class="leaf-wrap" id="leaf"><img class="leaf" src="assets/leaf.webp" alt="Неоновый дубовый лист — логотип KaefVPN" width="900" height="900"></div>
+        <div class="chip c1"><span class="ok"></span><div><small>Статус</small><b>Защищено</b></div></div>
+        <div class="chip c2">
+          <svg class="flag" viewBox="0 0 28 28"><circle cx="14" cy="14" r="14" fill="#fff"/><path fill="#1f4fa3" d="M8 0h5v28H8zM0 11.5h28v5H0z"/></svg>
+          <div><small>Сервер</small><b>Финляндия · 38 мс</b></div>
+        </div>
+        <div class="chip c3"><div><small>Трафик</small><b>Безлимит ∞</b></div></div>
+      </div>
+    </div>
+    <div class="scroll-hint">листай<i></i></div>
   </section>
 
-  <section class="wrap">
-    <h2>Сколько стоит</h2>
-    <div class="price">
-      <div><div class="sum">99&nbsp;<span class="star">⭐</span> <small>/ мес</small></div><div class="soon">Telegram Stars · оплата рублями — скоро</div></div>
-      <div>
-        <p><b>За одного человека.</b> Оплата прямо в боте. Сначала можно попробовать бесплатно, а потом уже решать.</p>
-        <a class="btn" href="https://t.me/KaefVPN_bot">Подключить</a>
+  <div class="facts">
+    <div class="wrap">
+      <div class="fact rv"><b>Финляндия</b><span>сервер рядом — низкий пинг</span></div>
+      <div class="fact rv d1"><b>∞ трафик</b><span>ничего не считаем и не режем</span></div>
+      <div class="fact rv d2"><b>1 минута</b><span>от «Старт» до подключения</span></div>
+      <div class="fact rv d3"><b>24 часа</b><span>бесплатно, чтобы попробовать</span></div>
+    </div>
+  </div>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="kicker rv">Как это работает</div>
+      <h2 class="rv d1">Никаких сайтов с формами. <span class="dim">Всё в одном боте.</span></h2>
+      <div class="how">
+        <div class="steps">
+          <div class="card step rv">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3.5-7.1"/><path d="M21 4v5h-5"/></svg></div>
+            <div><h3>Открой @KaefVPN_bot</h3><p>Нажми «Старт». Никакой почты, паролей и анкет — только Telegram.</p></div>
+          </div>
+          <div class="card step rv d1">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></div>
+            <div><h3>Забери ссылку подписки</h3><p>Бесплатные 24 часа за подписку на канал или сразу платный месяц.</p></div>
+          </div>
+          <div class="card step rv d2">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v10"/><path d="M18.4 6.6a9 9 0 1 1-12.8 0"/></svg></div>
+            <div><h3>Вставь и нажми кнопку</h3><p>В нашем приложении — «Войти через Telegram». В любом другом клиенте — <code>Добавить по URL</code>.</p></div>
+          </div>
+        </div>
+
+        <div class="chat rv d2" aria-hidden="true">
+          <div class="chat-head">
+            <div class="av"><img src="assets/leaf-256.webp" alt=""></div>
+            <div><b>KaefVPN</b><span>бот</span></div>
+          </div>
+          <div class="bubble">
+            ⚡ <b>KaefVPN</b><br><br>
+            Быстрый и стабильный VPN для повседневного использования<br><br>
+            <span class="m">🌍 Сервер в Финляндии<br>🔒 Несколько протоколов подключения<br>📱 Работает на всех устройствах<br>♾ Безлимитный трафик</span><br><br>
+            99 ⭐/мес — без скрытых условий
+          </div>
+          <div class="kb">
+            <span class="go">🎁 Бесплатный VPN</span>
+            <span class="go">💎 Купить подписку</span>
+            <div class="row"><span>👤 Мой профиль</span><span>📖 Как подключиться</span></div>
+            <div class="row"><span>🤝 Пригласить друга</span><span>🆘 Поддержка</span></div>
+          </div>
+          <div class="typing"><i></i><i></i><i></i></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="wrap">
-    <h2>Как подключиться</h2>
-    <ol class="steps">
-      <li><div>Открой <a href="https://t.me/KaefVPN_bot">@KaefVPN_bot</a> и нажми «Старт».</div></li>
-      <li><div>Забери ссылку подписки: бесплатную или оплаченную.</div></li>
-      <li><div>В VPN-клиенте нажми <code>+</code> → <code>Добавить по URL</code> и вставь ссылку. Всё.</div></li>
-    </ol>
-  </section>
-
-  <section class="wrap">
-    <div class="warn">
-      <h3>Не перепутай</h3>
-      <p>Аккаунтов с похожими названиями развелось много. Это не мы. Настоящие — только эти:</p>
-      <ul>
-        <li><a href="https://t.me/KaefVPN_bot">@KaefVPN_bot</a> <span>— бот</span></li>
-        <li><a href="https://t.me/KaefVPN">@KaefVPN</a> <span>— канал</span></li>
-        <li><a href="https://kaefvpn.ru/">kaefvpn.ru</a> <span>— этот сайт</span></li>
-      </ul>
+  <section id="features">
+    <div class="wrap">
+      <div class="kicker rv">Что внутри</div>
+      <h2 class="rv d1">Работает так, как должен работать VPN. <span class="dim">Быстро и без сюрпризов.</span></h2>
+      <div class="bento">
+        <div class="card span-4 feature-hi rv">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <h3>Скорость, которую не замечаешь</h3>
+          <p>Современные протоколы VLESS Reality, XHTTP, Trojan и Hysteria. Выбирай тот, что быстрее в твоей сети, — или оставь «Авто».</p>
+          <div class="servers">
+            <svg class="flag" viewBox="0 0 28 28"><circle cx="14" cy="14" r="14" fill="#fff"/><path fill="#1f4fa3" d="M8 0h5v28H8zM0 11.5h28v5H0z"/></svg>
+            <div><b>Финляндия</b><small>VLESS Reality · Авто</small></div>
+            <div class="ping"><span class="ok" style="width:8px;height:8px;border-radius:50%;background:var(--good);box-shadow:0 0 10px var(--good)"></span>38 мс</div>
+          </div>
+        </div>
+        <div class="card span-2 rv d1">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18.2 7.5a4.5 4.5 0 1 1 0 9c-2.5 0-4-2-6.2-4.5S8.3 7.5 5.8 7.5a4.5 4.5 0 1 0 0 9c2.5 0 4-2 6.2-4.5s3.7-4.5 6.2-4.5Z"/></svg></div>
+          <div class="big-num">∞</div>
+          <h3 style="margin-top:14px">Безлимитный трафик</h3>
+          <p>Смотри, качай, играй — гигабайты не считаем.</p>
+        </div>
+        <div class="card span-2 rv">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="14" height="10" rx="2"/><rect x="15" y="9" width="7" height="12" rx="2"/><path d="M6 18h6"/></svg></div>
+          <h3>Все твои устройства</h3>
+          <p>Телефон, ноутбук, телевизор. Android, iPhone, Windows, Mac — одна подписка.</p>
+        </div>
+        <div class="card span-2 rv d1">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.4 8.3 8 9 4.6-.7 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <h3>Не храним историю</h3>
+          <p>Не ведём журнал посещённых сайтов и не смотрим, что внутри трафика.</p>
+        </div>
+        <div class="card span-2 rv d2">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg></div>
+          <h3>Живая поддержка</h3>
+          <p>Пишешь в боте — отвечает человек, а не автоответчик.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="wrap">
-    <h2>Вопросы</h2>
-    <details><summary>Какой клиент ставить?</summary><p>Любой, который умеет добавлять подписку по ссылке. Бот подскажет, что выбрать под твоё устройство.</p></details>
-    <details><summary>Можно сначала попробовать?</summary><p>Да. В боте есть бесплатный доступ — нажми «Бесплатный VPN».</p></details>
-    <details><summary>Не подключается</summary><p>Напиши в «Поддержку» в боте и опиши, что видишь. Разберёмся.</p></details>
+  <section id="app">
+    <div class="wrap app">
+      <div class="phone-stage rv">
+        <div class="phone"><div class="screen"><div class="notch"></div><img src="assets/app/home-shot.webp" alt="Главный экран приложения KaefVPN: подключено, Финляндия, 38 мс" loading="lazy"></div></div>
+        <div class="chip c4"><span class="ok"></span><div><small>VPN</small><b>Защищено</b></div></div>
+        <div class="chip c5"><div><small>Загрузка</small><b>24,6 Мбит/с</b></div></div>
+      </div>
+      <div>
+        <div class="kicker rv">Своё приложение</div>
+        <h2 class="rv d1">Одна кнопка. <span class="dim">Остальное приложение сделает само.</span></h2>
+        <div class="platforms rv d2">
+          <span class="pill"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.5 19.4 6.4a.4.4 0 0 0-.7-.4l-1.8 3.1a10.9 10.9 0 0 0-9.8 0L5.3 6a.4.4 0 0 0-.7.4l1.8 3.1A10.1 10.1 0 0 0 1.5 17h21a10.1 10.1 0 0 0-4.9-7.5ZM7 14.3a1 1 0 1 1 1-1 1 1 0 0 1-1 1Zm10 0a1 1 0 1 1 1-1 1 1 0 0 1-1 1Z"/></svg>Android</span>
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="13" rx="2"/><path d="M8 21h8"/></svg>Android TV</span>
+          <span class="pill"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.5 10 4.5v7H3zM11 4.4 21 3v8.5H11zM3 12.5h7v7l-7-1zM11 12.5h10V21l-10-1.4z"/></svg>Windows</span>
+        </div>
+        <ul class="checks rv d3">
+          <li><svg><use href="#i-check"/></svg><span><b>Вход через Telegram</b> — код приходит в бот, ссылку копировать не нужно.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Режим «Авто»</b> сам выбирает самый быстрый сервер по пингу и переподключается, если что-то отвалилось.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Российские сайты напрямую</b> — один переключатель, и .ru открываются без VPN.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Плитка в шторке и значок в трее</b> — включай, не открывая приложение.</span></li>
+        </ul>
+        <a class="btn rv d4" href="app.html">Скачать KaefVPN</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="price">
+    <div class="wrap price-wrap">
+      <div>
+        <div class="kicker rv">Цена</div>
+        <h2 class="rv d1">Дешевле чашки кофе. <span class="dim">За целый месяц.</span></h2>
+        <p class="sub rv d2">Одна цена, без скрытых условий и автосписаний. Сначала попробуй бесплатно — заплатишь, только если понравится.</p>
+      </div>
+      <div class="price-card rv d2">
+        <span class="tag">24 часа бесплатно</span>
+        <div class="amount"><b>99</b><span class="star">⭐</span><span>/ 30 дней</span></div>
+        <p class="alt">или <b>99 ₽ криптой</b> — USDT / TON через CryptoBot</p>
+        <ul class="checks">
+          <li><svg><use href="#i-check"/></svg><span>Безлимитный трафик и все протоколы</span></li>
+          <li><svg><use href="#i-check"/></svg><span>Подписка работает на всех твоих устройствах</span></li>
+          <li><svg><use href="#i-check"/></svg><span>Своё приложение для Android, TV и Windows</span></li>
+          <li><svg><use href="#i-check"/></svg><span>Поддержка прямо в боте</span></li>
+        </ul>
+        <a class="btn" href="https://t.me/KaefVPN_bot"><svg><use href="#i-tg"/></svg>Подключить в боте</a>
+        <p class="fine">Оплата Stars возвращается командой /refund в течение 48 часов</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="official" style="padding-top:0">
+    <div class="wrap">
+      <div class="card official rv">
+        <div class="shield"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.4 8.3 8 9 4.6-.7 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <div>
+          <h3>Настоящий KaefVPN — только здесь</h3>
+          <p>Есть аккаунты с похожими названиями — они к нам не относятся. Приложение раздаём только на этом сайте и в канале.</p>
+          <div class="handles">
+            <a href="https://t.me/KaefVPN_bot">@KaefVPN_bot <span>· бот</span></a>
+            <a href="https://t.me/KaefVPN">@KaefVPN <span>· канал</span></a>
+            <a href="https://kaefvpn.ru/">kaefvpn.ru <span>· сайт</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" style="padding-top:40px">
+    <div class="wrap">
+      <div class="kicker rv">Вопросы</div>
+      <h2 class="rv d1">Коротко о главном</h2>
+      <div class="faq rv d2">
+        <details><summary>Можно сначала попробовать?<i></i></summary><p class="ans">Да. В боте нажми «🎁 Бесплатный VPN» и подпишись на канал @KaefVPN — получишь 24 часа бесплатно. Пришёл по ссылке друга — ещё +24 часа.</p></details>
+        <details><summary>Какое приложение ставить?<i></i></summary><p class="ans">На Android и Windows — наше приложение <a href="app.html" style="color:var(--accent-hi)">KaefVPN</a>. На iPhone подойдут Happ, Streisand или V2Box из App Store. Подойдёт и любой другой клиент, который умеет добавлять подписку по ссылке.</p></details>
+        <details><summary>Как оплатить?<i></i></summary><p class="ans">Прямо в боте: 99 Telegram Stars или 99 ₽ в криптовалюте (USDT / TON) через CryptoBot. Доступ продлевается сразу после оплаты.</p></details>
+        <details><summary>А если не понравится?<i></i></summary><p class="ans">Оплату Stars можно вернуть командой /refund в течение 48 часов — оплаченные дни при этом спишутся. Если сервис у тебя не заработал, напиши в поддержку, разберёмся.</p></details>
+        <details><summary>Что вы знаете обо мне?<i></i></summary><p class="ans">Только то, что нужно для работы: твой Telegram ID, даты подписки и оплаты. Историю сайтов не храним. Подробно — в <a href="privacy.html" style="color:var(--accent-hi)">политике конфиденциальности</a>.</p></details>
+        <details><summary>Не подключается<i></i></summary><p class="ans">Нажми «🆘 Поддержка» в боте и опиши, что видишь. В нашем приложении можно приложить логи: Настройки → Логи → «Скопировать логи».</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <img class="leaf-bg" src="assets/leaf.webp" alt="" loading="lazy">
+    <div class="wrap" style="position:relative">
+      <h2 class="rv">Хватит читать. <span class="neon" style="color:#e9dcff;text-shadow:0 0 18px rgba(168,85,255,.9),0 0 48px rgba(139,61,255,.6)">Кайфуй.</span></h2>
+      <div class="cta rv d1">
+        <a class="btn" href="https://t.me/KaefVPN_bot"><svg><use href="#i-tg"/></svg>Открыть @KaefVPN_bot</a>
+        <a class="btn ghost" href="https://t.me/KaefVPN">Канал @KaefVPN</a>
+      </div>
+    </div>
   </section>
 </main>
 
-<footer class="wrap">
-  <span>KaefVPN, 2026</span>
-  <span><a href="https://t.me/KaefVPN_bot">@KaefVPN_bot</a> · <a href="https://t.me/KaefVPN">@KaefVPN</a></span>
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="brand" href="./"><img src="assets/leaf-256.webp" alt="" width="34" height="34">KaefVPN</a>
+      <p>Подключайся и кайфуй. © 2026 KaefVPN</p>
+    </div>
+    <div>
+      <h4>Сервис</h4>
+      <ul><li><a href="https://t.me/KaefVPN_bot">Бот @KaefVPN_bot</a></li><li><a href="https://t.me/KaefVPN">Канал @KaefVPN</a></li><li><a href="app.html">Приложение</a></li></ul>
+    </div>
+    <div>
+      <h4>Документы</h4>
+      <ul><li><a href="privacy.html">Политика конфиденциальности</a></li><li><a href="terms.html">Пользовательское соглашение</a></li></ul>
+    </div>
+  </div>
 </footer>
+
+<script src="assets/site.js" defer></script>
 </body>
 </html>
